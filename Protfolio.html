@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Md Rezuan Hussain — Portfolio</title>
+  <meta name="description" content="Portfolio of Md Rezuan Hussain — Software Engineer (Python, .NET, ML, SQL, SQA) from Dhaka, Bangladesh." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <meta property="og:title" content="Md Rezuan Hussain — Portfolio" />
+  <meta property="og:description" content="Software Engineer (Python, .NET, ML, SQL, SQA) — Projects, Skills, Experience, and Contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1220;          /* dark */
+      --card: #0f172a;
+      --muted: #8aa0c4;
+      --text: #e5ecff;
+      --accent: #38bdf8;
+      --ring: rgba(56,189,248,.45);
+      --shadow: 0 10px 25px rgba(2,6,23,.6);
+      --border: #1e293b;
+    }
+    :root.light {
+      --bg: #f8fafc;          /* light */
+      --card: #ffffff;
+      --muted: #475569;
+      --text: #0f172a;
+      --accent: #0284c7;
+      --ring: rgba(2,132,199,.2);
+      --shadow: 0 8px 22px rgba(15,23,42,.08);
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(56,189,248,.08), transparent 60%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      letter-spacing: .1px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: saturate(140%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 78%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .4px; }
+    .brand .logo {
+      width: 34px; height: 34px; border-radius: 12px;
+      background: linear-gradient(135deg, #22d3ee, #38bdf8 45%, #6366f1);
+      box-shadow: var(--shadow);
+    }
+    .nav a { margin: 0 10px; font-weight: 500; color: var(--text); opacity: .9; }
+    .nav .actions { display: flex; align-items: center; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--card) 88%, transparent);
+      color: var(--text); box-shadow: var(--shadow); cursor: pointer; transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(135deg, #22d3ee, #38bdf8); color: #0b1220; border-color: transparent; font-weight: 700; }
+
+    /* Hero */
+    .hero { padding: 64px 0 24px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; }
+    .title { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.2; margin: 8px 0 14px; font-weight: 800; }
+    .subtitle { color: var(--muted); font-size: clamp(14px, 1.6vw, 18px); }
+    .tag { font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--accent); display: inline-flex; gap: 8px; align-items: center; }
+    .tag .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 4px var(--ring); }
+
+    .avatar-wrap { display: grid; place-items: center; }
+    .avatar {
+      width: min(240px, 70%); aspect-ratio: 1 / 1; border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(56,189,248,.15), transparent 45%), url('YOUR_PHOTO.jpg') center/cover no-repeat;
+    }
+    .quick { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .chip { border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; font-size: 13px; color: var(--muted); }
+
+    /* Sections */
+    section { padding: 56px 0; border-top: 1px dashed var(--border); }
+    h2 { font-size: clamp(22px, 3vw, 30px); margin: 0 0 18px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+    .card { grid-column: span 12; border: 1px solid var(--border); background: color-mix(in oklab, var(--card) 96%, transparent); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .row-2 { grid-column: span 6; }
+    .row-3 { grid-column: span 4; }
+
+    /* Footer */
+    footer { padding: 32px 0; color: var(--muted); border-top: 1px dashed var(--border); text-align: center; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .avatar { width: 180px; }
+      .row-2 { grid-column: span 12; }
+      .row-3 { grid-column: span 12; }
+    }
+.avatar {
+  background: linear-gradient(180deg, rgba(56,189,248,.15), transparent 45%),
+              url('rsz_185.jpg') center/cover no-repeat;
+}
+    /* Focus */
+    :focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; border-radius: 10px; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Md Rezuan Hussain",
+    "jobTitle": "Software Engineer",
+    "address": {"@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "Bangladesh"},
+    "knowsAbout": ["Python", ".NET", "Machine Learning", "SQL", "Software Quality Assurance"],
+    "url": "https://example.com"
+  }
+  </script>
+ 
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      
+      <div class="brand" aria-label="Brand" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l8.66 5v8l-8.66 5-8.66-5v-8L12 3z" stroke="currentColor" stroke-width="1.3"/><path d="M12 3v18" stroke="currentColor" stroke-width="1.3" opacity=".6"/><path d="M3.34 8L12 13l8.66-5" stroke="currentColor" stroke-width="1.3" opacity=".6"/></svg>
+        
+        <span>Md Rezuan Hussain</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="actions">
+         <a class="btn primary" href="MD REZUAN HUSSAIN  Resume.pdf" download>⬇️ Resume</a>
+        <button class="btn" id="themeBtn" aria-label="Toggle theme">🌙 Theme</button>
+       
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section aria-label="Intro" style="border-top:none">
+      <div class="hero">
+        <div>
+          <span class="tag"><span class="dot"></span> Open to work</span>
+          <h1 class="title">Hi, I'm Md Rezuan Hussain.Software Engineer focused on Python, .NET, SQL & ML</h1>
+          <p class="subtitle">Fresher from Dhaka, Bangladesh. I build clean backend services, data-driven features, and testable software with SQA practices.</p>
+          <div class="quick" role="list" aria-label="Highlights">
+            <span class="chip" role="listitem">Python</span>
+            <span class="chip" role="listitem">.NET (C#)</span>
+            <span class="chip" role="listitem">Machine Learning</span>
+            <span class="chip" role="listitem">SQL (PostgreSQL, MySQL, MSSQL)</span>
+            <span class="chip" role="listitem">SQA & Testing</span>
+          </div>
+        </div>
+        <div class="avatar-wrap">
+          <div class="avatar" role="img" aria-label="Profile photo placeholder"></div>
+          
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="grid">
+        <article class="card" style="grid-column: span 8">
+          <p>
+            Hi, I’m <strong>Md Rezuan Hussain</strong>—a fresher Software Engineer passionate about building reliable systems and data-powered features.
+            I write clean, maintainable code and follow solid SQA practices. My current focus areas are <em>Python backends</em>, <em>.NET APIs</em>,
+            and <em>ML-driven insights</em> with strong <em>SQL</em> fundamentals.
+          </p>
+          <p>
+            I enjoy solving practical problems, automating workflows, and learning by doing. If you’re hiring or want to collaborate,
+            feel free to reach out—my inbox is open!
+          </p>
+        </article>
+        <aside class="card" style="grid-column: span 4">
+          <h3>Quick Info</h3>
+          <ul style="margin:0; padding-left: 18px">
+            <li><strong>Location:</strong> Dhaka, Bangladesh</li>
+            <li><strong>Degree:</strong> BSc in CSE</li>
+            <li><strong>Major:</strong> Software Engineering</li>
+            <li><strong>Status:</strong> Fresher / Entry-level</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <div class="grid">
+        <div class="card row-3">
+          <h3>Languages</h3>
+          <p class="meta">Python, C++, HTML, PHP, CSS, C#, SQL, JavaScript</p>
+        </div>
+        <div class="card row-3">
+          <h3>Frameworks</h3>
+          <p class="meta">.NET (ASP.NET), Web API </p>
+        </div>
+        <div class="card row-3">
+          <h3>Databases</h3>
+          <p class="meta">PostgreSQL, MySQL, SQL Server</p>
+        </div>
+        <div class="card row-3">
+          <h3>ML / Data</h3>
+          <p class="meta">Pandas, scikit-learn, NumPy, Matplotlib</p>
+        </div>
+        <div class="card row-3">
+          <h3>SQA & Tools</h3>
+          <p class="meta">Unit testing, Postman, Git/GitHub, CI basics</p>
+        </div>
+        <div class="card row-3">
+          <h3>Other</h3>
+          <p class="meta">AUTO CAD, Linux , Agile/SDLC</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="grid">
+        <article class="card row-2">
+          <h3> Fire Detection Using Convolutional Neural Networks (ML)</h3>
+          <p class="meta">Python, Pandas</p>
+          <p>Trained a CNN/classifier over sensor measurements to detect gas types and conditions; built data pipelines for preprocessing and evaluation.</p>
+          
+        </article>
+        <article class="card row-2">
+          <h3>Student registration API (.NET)</h3>
+          <p class="meta">ASP.NET Framework, Web API ,MS SQL.
+Applied N-Tier Architecture</p>
+          <p> CRUD,  DAL/BLL separation and DTOs.</p>
+          
+        </article>
+        <article class="card row-2">
+          <h3>Portfolio Website</h3>
+          <p class="meta">HTML, CSS, JS</p>
+          <p>This website—responsive, accessible, and lightweight with a dark/light theme toggle.</p>
+          
+        </article>
+        <article class="card row-2">
+          <h3>SQL Analytics Pack</h3>
+          <p class="meta">PostgreSQL, Windows/Linux</p>
+          <p>Reusable SQL queries, views, and procedures for reporting and data quality checks.</p>
+          
+        </article>
+        <article class="card row-2">
+          <h3>Python</h3>
+          <p class="meta"> word search game</p>
+          <p> Python(Tkinter) and Python(Pandas) worked on a bankingbased dataset to find the lackings inside banking sector and to make banking sector more
+effective and efficient.</p>
+          
+        </article>
+        <article class="card row-2">
+          <h3>DATA BASE</h3>
+          <p class="meta">Metro Rail Management system</p>
+          <p>Using HTML, CSS, PHP and
+Oracle Database 10g and MySQL, PSQL.</p>
+          
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience / Education -->
+    <section id="experience" aria-labelledby="exp-title">
+      <h2 id="exp-title">Experience & Education</h2>
+      <div class="grid">
+        <article class="card" style="grid-column: span 8">
+          <h3>Internships / Training</h3>
+          <ul style="margin:0; padding-left: 18px">
+            <li><strong>Software Quality Testing (SQA)</strong> — manual testing basics, test case design, bug reporting.</li>
+            <li><strong>Backend API Practice</strong> — .NET Web API with database CRUD, auth, and unit tests.</li>
+            <li><strong>ML Basics</strong> — datasets, model training/validation, simple deployment experiments.</li>
+          </ul>
+        </article>
+        <aside class="card" style="grid-column: span 4">
+          <h3>Education</h3>
+          <p class="meta"><strong>American International University-Bangladesh</strong><br/><strong>BSc in Computer Science & Engineering</strong><br/>Major: Software Engineering<br/>
+          Minor: Information Systems</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="grid">
+        <form class="card" style="grid-column: span 7" action="https://formspree.io/f/your-id" method="POST">
+          <h3>Send a message</h3>
+          <div style="display:grid; gap:12px; grid-template-columns: 1fr 1fr;">
+            <label> Name
+              <input name="name" required placeholder="Your name" />
+            </label>
+            <label> Email
+              <input type="email" name="email" required placeholder="your@email.com" />
+            </label>
+          </div>
+          <label> Subject
+            <input name="subject" placeholder="Project inquiry" />
+          </label>
+          <label> Message
+            <textarea name="message" required rows="5" placeholder="Hello…"></textarea>
+          </label>
+          <button class="btn primary" type="submit">Send</button>
+          <p class="meta">Or email: <a href="mailto:rezuanh84@gmail.com">rezuanh84@gmail.com</a></p>
+        </form>
+        <aside class="card" style="grid-column: span 5">
+          <h3>Links</h3>
+          <ul style="margin:0; padding-left: 18px">
+            <li><a href="https://github.com/Rezuanh1" target="_blank" rel="noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/mdrezuanhussain/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+           
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Md Rezuan Hussain • </div>
+    <a class="tag" href="#">Back to top ↑</a>
+  </footer>
+
+  <style>
+    /* Form elements & small utilities */
+    input, textarea {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: color-mix(in oklab, var(--card) 96%, transparent); color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.02);
+    }
+    label { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+    ul { line-height: 1.9; }
+  </style>
+
+  <script>
+    // Theme Toggle with localStorage
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light') root.classList.add('light');
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('light');
+      localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark');
+    });
+
+    // Smooth anchor scrolling + focus management
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(() => el.querySelector('h2')?.focus?.(), 400);
+        }
+      });
+    });
+
+    // Current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
